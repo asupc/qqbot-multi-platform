@@ -62,6 +62,18 @@
           "href": "page/env.html",
           "icon": "fa fa-envira",
           "target": "_self"
+        },
+        {
+          "title": "数据迁移",
+          "href": "page/database-migration.html",
+          "icon": "fa fa-database",
+          "target": "_self"
+        },
+        {
+          "title": "数据导入",
+          "href": "page/importData.html",
+          "icon": "fa fa-database",
+          "target": "_self"
         }
       ]
     }

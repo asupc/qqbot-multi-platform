@@ -9,23 +9,11 @@
           data-name="vs/editor/editor.main"
           href="../monaco-editor/min/vs/editor/editor.main.css" />
     <style>
-        #container {
-            width: 100%;
-            height: calc(100% - 90px);
-            margin-top: 20px;
-        }
-
-        html, body, #QL-Configs {
-            height: 100%;
-        }
+        #container { width: 100%; height: calc(100% - 90px); margin-top: 20px; }
+        html, body, #QL-Configs { height: 100%; }
         /*header{padding:20px}*/
-        #QL-Configs {
-            padding: 20px;
-        }
-
-        footer {
-            margin-top: 20px;
-        }
+        #QL-Configs { padding: 20px; }
+        footer { margin-top: 20px; }
     </style>
 </head>
 <body>
@@ -75,7 +63,6 @@
     <script src="../monaco-editor/min/vs/editor/editor.main.js"></script>
 
     <script>
-
         var configs = new Vue({
             el: '#QL-Configs',
             data: {
@@ -91,7 +78,8 @@
                     '.ts': 'typescript'
                 },
                 CheckQLs: [],
-                SelectAllQL: false
+                SelectAllQL: true,
+                defaultFile: null
             },
             methods: {
                 getQLs() {
@@ -102,7 +90,7 @@
                                 configs.CheckQLs.push({
                                     Id: response[i].Id,
                                     Name: response[i].Name,
-                                    Enable: i == 0
+                                    Enable: configs.SelectAllQL || i == 0
                                 })
                             }
                             configs.QLs = response;
@@ -117,10 +105,10 @@
                         });
                 },
                 getFiles() {
-                    axios.get('/api/QLConfig/' + this.SelectQLId)
+                    axios.get('/api/QLScripts/' + this.SelectQLId)
                         .then(function (response) {
                             configs.Files = response;
-                            configs.SelectFileName = "config.sh";
+                            configs.SelectFileName = configs.defaultFile ?? "jdCookie.js";
                             configs.getFile();
                         })
                         .catch(function (error) {
@@ -131,7 +119,7 @@
                         });
                 },
                 getFile() {
-                    axios.get('/api/QLConfig/' + this.SelectQLId + "/" + this.SelectFileName)
+                    axios.get('/api/QLScripts/' + this.SelectQLId + "/" + this.SelectFileName)
                         .then(function (response) {
                             configs.createEditor(response);
                         })
@@ -176,6 +164,7 @@
                 }
             },
             mounted() {
+                this.defaultFile = (this.$queryString("fileName"))
                 this.getQLs();
             }
         });

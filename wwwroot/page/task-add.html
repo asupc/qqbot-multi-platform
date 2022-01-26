@@ -23,7 +23,7 @@
                 <input type="hidden" id="ExecAllCookie" name="ExecAllCookie" value="false">
                 <input type="hidden" id="EnableConc" name="EnableConc" value="false">
                 <input type="hidden" id="EnablePush" name="EnablePush" value="false">
-
+                <input type="hidden" id="PushGroup" name="PushGroup" value="false">
             </div>
         </div>
         <div class="layui-form-item">
@@ -57,11 +57,11 @@
             </div>
         </div>
         <!--<div class="layui-form-item">
-            <label class="layui-form-label required">并发限制</label>
-            <div class="layui-input-block">
-                <input type="number" id="ConcCount" value="0" name="ConcCount" class="layui-input" lay-verify="required" lay-reqtext="并发线程数">
-            </div>
-        </div>-->
+        <label class="layui-form-label required">并发限制</label>
+        <div class="layui-input-block">
+            <input type="number" id="ConcCount" value="0" name="ConcCount" class="layui-input" lay-verify="required" lay-reqtext="并发线程数">
+        </div>
+    </div>-->
         <div class="layui-form-item">
             <label class="layui-form-label">
                 是否启用
@@ -92,6 +92,15 @@
             </label>
             <div class="layui-input-inline">
                 <input type="checkbox" lay-skin="switch" lay-filter="EnablePush_CKB" lay-text="开启|关闭">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">
+                允许群聊
+                <i class="layui-icon tips" style="color:forestgreen" data-title="在群聊中回复脚本结果">&#xe60b;</i>
+            </label>
+            <div class="layui-input-inline">
+                <input type="checkbox" lay-skin="switch" lay-filter="PushGroup_CKB" lay-text="开启|关闭">
             </div>
         </div>
         <div class="layui-form-item">
@@ -140,7 +149,11 @@
                             node[0].checked = true;
                             $("#EnablePush").val(true);
                         }
-
+                        if (data.PushGroup) {
+                            var node = $(`input[type="checkbox"][lay-filter^="PushGroup_CKB"]`);
+                            node[0].checked = true;
+                            $("#PushGroup").val(true);
+                        }
                         form.render();
                     }
                 });
@@ -167,6 +180,9 @@
             });
             form.on('switch(EnablePush_CKB)', function (data) {
                 $("#EnablePush").val(this.checked);
+            });
+            form.on('switch(PushGroup_CKB)', function (data) {
+                $("#PushGroup").val(this.checked);
             });
 
             //执行实例

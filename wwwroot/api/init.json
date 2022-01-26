@@ -15,6 +15,37 @@
       "target": "_self",
       "child": [
         {
+          "title": "青龙管理",
+          "icon": "fa fa-optin-monster",
+          "target": "_self",
+          "child": [
+            {
+              "title": "面板管理",
+              "href": "page/qinglong.html",
+              "icon": "fa fa-window-maximize",
+              "target": "_self"
+            },
+            {
+              "title": "定时任务",
+              "href": "page/qltask.html",
+              "icon": "fa fa-optin-monster",
+              "target": "_self"
+            },
+            {
+              "title": "脚本管理",
+              "href": "page/ql-scripts.html",
+              "icon": "fa fa-optin-monster",
+              "target": "_self"
+            },
+            {
+              "title": "配置文件",
+              "href": "page/configs.html",
+              "icon": "fa fa-optin-monster",
+              "target": "_self"
+            }
+          ]
+        },
+        {
           "title": "系统管理",
           "icon": "fa fa-cog",
           "target": "_self",
@@ -30,14 +61,20 @@
               "href": "page/system-command-setting.html",
               "icon": "fa fa-cog",
               "target": "_self"
+            },
+            {
+              "title": "数据迁移",
+              "href": "page/database-migration.html",
+              "icon": "fa fa-database",
+              "target": "_self"
+            },
+            {
+              "title": "数据导入",
+              "href": "page/importData.html",
+              "icon": "fa fa-database",
+              "target": "_self"
             }
           ]
-        },
-        {
-          "title": "青龙面板",
-          "icon": "fa fa-window-maximize",
-          "href": "page/qinglong.html",
-          "target": "_self"
         },
         {
           "title": "账号管理",
@@ -61,18 +98,6 @@
           "title": "环境变量",
           "href": "page/env.html",
           "icon": "fa fa-envira",
-          "target": "_self"
-        },
-        {
-          "title": "数据迁移",
-          "href": "page/database-migration.html",
-          "icon": "fa fa-database",
-          "target": "_self"
-        },
-        {
-          "title": "数据导入",
-          "href": "page/importData.html",
-          "icon": "fa fa-database",
           "target": "_self"
         }
       ]

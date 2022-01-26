@@ -37,7 +37,6 @@
             </fieldset>
             <script type="text/html" id="toolbarDemo">
                 <div class="layui-btn-container">
-                    <!--<button class="layui-btn layui-btn-normal layui-btn-sm data-add-btn" lay-event="Sync"> Cookie同步 </button>-->
                 </div>
             </script>
 
@@ -73,7 +72,6 @@
                             { field: 'Command', title: '执行命令', sort: true },
                             { field: 'FileName', title: '执行脚本', sort: true },
                             { field: 'Cron', title: '定时执行', sort: true },
-                            //{ field: 'ConcCount', title: '并发限制', sort: true },
                             {
                                 field: 'Enable', title: '是否启用', sort: true, templet(d) {
                                     return d.Enable ? "是" : "否";
@@ -94,7 +92,12 @@
                                     return d.EnablePush ? "是" : "否";
                                 },
                             },
-                            { field: 'MaxCount', title: '日限制次数', sort: true },
+                            {
+                                field: 'PushGroup', title: '允许群聊', sort: true, templet(d) {
+                                    return d.PushGroup ? "是" : "否";
+                                },
+                            },
+                            { field: 'MaxCount', title: '日限制', sort: true },
                             { title: '操作', minWidth: 120, toolbar: '#currentTableBar', align: "center" }
                         ]],
                         limits: [10, 15, 20, 25, 50, 100],
